@@ -88,7 +88,55 @@
 <img src="64e379f5c8606ea47c3e346c/64eed5c01b293c29016a7bbf_Underline 1.svg" loading="lazy" >
 <p class="text-gray-3"> is a nonprofit healthcare initiative committed to delivering free healthcare and essential care services with compassion, dignity, and long-term commitment.</p>
 
+<style>
+.support-rect {
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-sizing: border-box;
+}
 
+.support-btn {
+  background: #2ec0c5;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.support-text {
+  font-size: 14px;
+  color: #333;
+}
+
+/* responsive */
+@media (max-width: 600px) {
+  .support-rect {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+</style>
+<div class="support-rect">
+  <button class="support-btn"
+    onclick="window.location.href='https://jeevancare.kesug.com/JeevanCare/support.php'">
+    Support
+  </button>
+
+  <span class="support-text">
+    Click on this button in case of a medical support
+  </span>
+</div>
 </div>
 </div>
 </div>
