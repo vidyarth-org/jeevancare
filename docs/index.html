@@ -620,7 +620,84 @@ We are interested in joining to support your initiative. Please share the detail
 </div>
 </div>
 -->
+<div>
+<div class="sponsor-slider" style="width:100%; max-width:600px; margin:auto; overflow:hidden;">
+  <div class="slide-group" style="display: none; justify-content: center; gap: 5%; align-items: center;">
+    <img src="images/11.png" style="width:45%; height:auto;">
+    <img src="images/22.png" style="width:45%; height:auto;">
+  </div>
+  <div class="slide-group" style="justify-content: center; gap: 5%; align-items: center; display: none;">
+    <img src="images/33.png" style="width:45%; height:auto;">
+    <img src="images/44.png" style="width:45%; height:auto;">
+  </div>
+  <div class="slide-group fade-in" style="justify-content: center; gap: 5%; align-items: center; display: flex;">
+    <img src="images/55.png" style="width:45%; height:auto;">
+    <img src="images/66.png" style="width:45%; height:auto;">
+  </div>
+  <div class="slide-group" style="justify-content: center; gap: 5%; align-items: center; display: none;">
+    <img src="images/77.png" style="width:45%; height:auto;">
+    <img src="images/88.png" style="width:45%; height:auto;">
+  </div>
 
+  <style>
+    .sponsor-slider img {
+      border-radius: 8px;
+      object-fit: contain;
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .fade-out {
+      animation: fadeOut 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes fadeOut {
+      from {opacity: 1; transform: translateY(0);}
+      to {opacity: 0; transform: translateY(-20px);}
+    }
+
+    @media (max-width:600px) {
+      .sponsor-slider img {
+        width: 48%;
+      }
+    }
+  </style>
+
+  <script>
+    const groups = document.querySelectorAll('.slide-group');
+    let index = 0;
+
+    function showNext() {
+      const current = groups[index];
+      current.classList.remove('fade-in');
+      current.classList.add('fade-out');
+
+      setTimeout(() => {
+        current.style.display = 'none';
+        current.classList.remove('fade-out');
+
+        index = (index + 1) % groups.length;
+        const next = groups[index];
+        next.style.display = 'flex';
+        next.classList.add('fade-in');
+      }, 1000);
+    }
+
+    groups[index].style.display = 'flex';
+    groups[index].classList.add('fade-in');
+    setInterval(showNext, 3000);
+  </script>
+</div>
+</div>
+
+	
 
 <div>
 <div class="container-1200px">
