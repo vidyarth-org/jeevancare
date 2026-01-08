@@ -13,6 +13,11 @@
         background: #000;
     }
 
+    /* HIDE PAGE INITIALLY */
+    body {
+        display: none;
+    }
+
     .img-box {
         width: 100vw;
         height: auto;
@@ -21,7 +26,7 @@
     .img-box img {
         width: 100%;
         height: auto;
-        object-fit: cover; /* fullscreen fit */
+        object-fit: cover;
         display: block;
     }
 </style>
@@ -40,10 +45,11 @@ window.onload = function () {
     let userId = prompt("Enter ID:");
     let password = prompt("Enter Password:");
 
-    if (userId !== VALID_ID || password !== VALID_PASSWORD) {
+    if (userId === VALID_ID && password === VALID_PASSWORD) {
+        document.body.style.display = "block"; // SHOW PAGE
+    } else {
         alert("Access Denied");
         document.body.innerHTML = "";
-        return;
     }
 };
 
@@ -67,20 +73,17 @@ document.addEventListener("keydown", function (e) {
 
 <body>
 
-<!-- IMAGE 1 -->
 <div class="img-box">
     <img src="img/apl.jpg" alt="Image 1">
 </div>
+<!--
+<div class="img-box">
+    <img src="image2.jpg" alt="Image 2">
+</div>
 
-<!-- IMAGE 2
 <div class="img-box">
-    <img src="img/apl.jpg" alt="Image 2">
+    <img src="image3.jpg" alt="Image 3">
 </div>
- -->
-<!-- IMAGE 3
-<div class="img-box">
-    <img src="img/apl.jpg" alt="Image 3">
-</div>
- -->
+-->
 </body>
 </html>
