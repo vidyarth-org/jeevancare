@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JC Docs</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: #000;
+    }
+
+    .img-box {
+        width: 100vw;
+        height: auto;
+    }
+
+    .img-box img {
+        width: 100%;
+        height: auto;
+        object-fit: cover; /* fullscreen fit */
+        display: block;
+    }
+</style>
+
+<script>
+/* ======================
+   LOGIN CREDENTIALS
+====================== */
+const VALID_ID = "admin";
+const VALID_PASSWORD = "12345";
+
+/* ======================
+   AUTH CHECK
+====================== */
+window.onload = function () {
+    let userId = prompt("Enter ID:");
+    let password = prompt("Enter Password:");
+
+    if (userId !== VALID_ID || password !== VALID_PASSWORD) {
+        alert("Access Denied");
+        document.body.innerHTML = "";
+        return;
+    }
+};
+
+/* ======================
+   DISABLE RIGHT CLICK & INSPECT
+====================== */
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+document.addEventListener("keydown", function (e) {
+    if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key)) ||
+        (e.ctrlKey && e.key === "U")
+    ) {
+        e.preventDefault();
+        return false;
+    }
+});
+</script>
+</head>
+
+<body>
+
+<!-- IMAGE 1 -->
+<div class="img-box">
+    <img src="img/apl.jpg" alt="Image 1">
+</div>
+
+<!-- IMAGE 2
+<div class="img-box">
+    <img src="img/apl.jpg" alt="Image 2">
+</div>
+ -->
+<!-- IMAGE 3
+<div class="img-box">
+    <img src="img/apl.jpg" alt="Image 3">
+</div>
+ -->
+</body>
+</html>
