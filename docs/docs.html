@@ -6,84 +6,147 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-    html, body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        background: #000;
-    }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    display: none;
+}
 
-    /* HIDE PAGE INITIALLY */
-    body {
-        display: none;
-    }
+/* Heading */
+h1 {
+    text-align: center;
+    margin-top: 30px;
+    letter-spacing: 1px;
+}
 
-    .img-box {
-        width: 100vw;
-        height: auto;
-    }
+/* Buttons container */
+.docs-container {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
 
-    .img-box img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        display: block;
-    }
+/* Buttons */
+.docs-container button {
+    width: 260px;
+    padding: 14px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    background: #0a7cff;
+    color: #fff;
+}
+
+.docs-container button:hover {
+    background: #055ec4;
+}
+
+/* Fullscreen overlay */
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Image */
+.overlay img {
+    max-width: 95%;
+    max-height: 95%;
+}
+
+/* Close button */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+}
 </style>
+</head>
+
+<body>
+
+<h1>JC Docs</h1>
+
+<div class="docs-container">
+    <button onclick="openDoc('docs/doc1.jpg')">Document 1</button>
+    <button onclick="openDoc('docs/doc2.jpg')">Document 2</button>
+    <button onclick="openDoc('docs/doc3.jpg')">Document 3</button>
+    <button onclick="openDoc('docs/doc4.jpg')">Document 4</button>
+    <button onclick="openDoc('docs/doc5.jpg')">Document 5</button>
+    <button onclick="openDoc('docs/doc6.jpg')">Document 6</button>
+    <button onclick="openDoc('docs/doc7.jpg')">Document 7</button>
+    <button onclick="openDoc('docs/doc8.jpg')">Document 8</button>
+    <button onclick="openDoc('docs/doc9.jpg')">Document 9</button>
+    <button onclick="openDoc('docs/doc10.jpg')">Document 10</button>
+</div>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay">
+    <span class="close-btn" onclick="closeDoc()">✖</span>
+    <img id="docImage">
+</div>
 
 <script>
 /* ======================
-   LOGIN CREDENTIALS
+   LOGIN PROTECTION
 ====================== */
-const VALID_ID = "admin";
-const VALID_PASSWORD = "12345";
+(function () {
+    const correctID = "jcadmin";
+    const correctPassword = "jc@2026";
 
-/* ======================
-   AUTH CHECK
-====================== */
-window.onload = function () {
-    let userId = prompt("Enter ID:");
-    let password = prompt("Enter Password:");
+    const userID = prompt("Enter ID:");
+    const userPass = prompt("Enter Password:");
 
-    if (userId === VALID_ID && password === VALID_PASSWORD) {
-        document.body.style.display = "block"; // SHOW PAGE
+    if (userID === correctID && userPass === correctPassword) {
+        document.body.style.display = "block";
     } else {
         alert("Access Denied");
         document.body.innerHTML = "";
+        document.body.style.display = "none";
     }
-};
+})();
 
 /* ======================
-   DISABLE RIGHT CLICK & INSPECT
+   DOCUMENT VIEW
+====================== */
+function openDoc(src) {
+    document.getElementById("docImage").src = src;
+    document.getElementById("overlay").style.display = "flex";
+}
+
+function closeDoc() {
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("docImage").src = "";
+}
+
+/* ======================
+   BLOCK INSPECT & CLICKS
 ====================== */
 document.addEventListener("contextmenu", e => e.preventDefault());
 
 document.addEventListener("keydown", function (e) {
     if (
-        e.key === "F12" ||
-        (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key)) ||
-        (e.ctrlKey && e.key === "U")
+        e.keyCode === 123 || // F12
+        (e.ctrlKey && e.shiftKey && e.keyCode === 73) || // Ctrl+Shift+I
+        (e.ctrlKey && e.shiftKey && e.keyCode === 74) || // Ctrl+Shift+J
+        (e.ctrlKey && e.keyCode === 85) // Ctrl+U
     ) {
         e.preventDefault();
         return false;
     }
 });
 </script>
-</head>
 
-<body>
-
-<div class="img-box">
-    <img src="img/apl.jpg" alt="Image 1">
-</div>
-<!--
-<div class="img-box">
-    <img src="image2.jpg" alt="Image 2">
-</div>
-
-<div class="img-box">
-    <img src="image3.jpg" alt="Image 3">
-</div>
--->
 </body>
 </html>
