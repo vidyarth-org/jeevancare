@@ -71,6 +71,28 @@ h1 {
     color: #fff;
     cursor: pointer;
 }
+
+    /* Floating Exit Button */
+#exitBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #e60000;
+    color: #ffffff;
+    padding: 14px 22px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 10000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    user-select: none;
+}
+
+#exitBtn:hover {
+    background: #b30000;
+}
+
 </style>
 </head>
 
@@ -151,8 +173,19 @@ document.addEventListener("keydown", function (e) {
 });
 </script>
 
+
+    <!-- Exit Button -->
+<div id="exitBtn" onclick="exitPage()">EXIT</div>
+<script>
+function exitPage() {
+    window.location.href = "https://www.jeevan.care/";
+}
+</script>
+
+
 </body>
 </html>
+
 
 
 
